@@ -1,5 +1,6 @@
 package mailsender.model.mail;
 
+import mailsender.model.pack.Package;
 import mailsender.model.send.AbstractSendable;
 
 public class MailPackage extends AbstractSendable {
