@@ -18,19 +18,18 @@ public class Inspector implements MailService {
 
     @Override
     public Sendable processMail(Sendable mail) {
-        if (!(mail instanceof MailPackage)) {
+        if (!(mail instanceof MailPackage mailPackage)) {
             return mail;
         }
 
-        MailPackage mailPackage = (MailPackage) mail;
         Package aPackage = mailPackage.getContent();
+        String content = aPackage.getContent().toUpperCase();
 
-        if (aPackage.getContent().equalsIgnoreCase(WEAPONS) ||
-            aPackage.getContent().equalsIgnoreCase(BANNED_SUBSTANCE)) {
+        if (content.contains(WEAPONS) || content.contains(BANNED_SUBSTANCE)) {
             throw new IllegalPackageException();
         }
 
-        if (aPackage.getContent().equalsIgnoreCase(STONES)) {
+        if (content.contains(STONES)) {
             throw new StolenPackageException();
         }
 
