@@ -2,21 +2,19 @@ package mailsender.post;
 
 import mailsender.model.send.Sendable;
 import mailsender.service.MailService;
-import mailsender.service.RealMailSender;
-
-import java.util.List;
+import mailsender.service.RealMailService;
 
 public class UntrustworthyMailWorker implements MailService {
     private MailService[] mailServices;
-    private RealMailSender realMailSender;
+    private RealMailService realMailService;
 
     public UntrustworthyMailWorker(MailService[] mailServices) {
         this.mailServices = mailServices;
-        realMailSender = new RealMailSender();
+        realMailService = new RealMailService();
     }
 
-    public RealMailSender getRealMailSender() {
-        return realMailSender;
+    public RealMailService getRealMailService() {
+        return realMailService;
     }
 
     @Override
@@ -27,6 +25,6 @@ public class UntrustworthyMailWorker implements MailService {
             process = mailServices[i].processMail(process);
         }
 
-        return realMailSender.processMail(mail);
+        return realMailService.processMail(mail);
     }
 }
