@@ -16,10 +16,9 @@ public class Spy implements MailService {
 
     @Override
     public Sendable processMail(Sendable mail) {
-        if (!(mail instanceof MailMessage)) {
+        if (!(mail instanceof MailMessage mailMessage)) {
             return mail;
         }
-        MailMessage mailMessage = (MailMessage) mail;
         String from = mailMessage.getFrom();
         String to = mailMessage.getTo();
         String message = mailMessage.getMessage();

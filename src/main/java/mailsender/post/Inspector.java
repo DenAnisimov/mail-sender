@@ -7,10 +7,9 @@ import mailsender.post.exception.IllegalPackageException;
 import mailsender.post.exception.StolenPackageException;
 import mailsender.service.MailService;
 
+import static mailsender.post.InvalidPackageContent.*;
+
 public class Inspector implements MailService {
-    private final String WEAPONS = "WEAPONS";
-    private final String BANNED_SUBSTANCE = "BANNED SUBSTANCE";
-    private final String STONES = "STONES";
 
     public Inspector() {
 
